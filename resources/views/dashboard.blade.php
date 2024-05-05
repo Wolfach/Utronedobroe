@@ -13,9 +13,12 @@
             <div class="main__new__text">Недавно загруженное:</div>
         </div>
         <div class="main__block">
-            foreach ($animeposters as $animeposter)
-            <div class="main__block__title"><h1>{{$animeposter->title}}</h1></div>
-            endforeach
+            <div class="main__block__title">
+                <a href="">Адский Рай</a>
+            </div>
+            <div class="main__block__poster">
+                <a href=""><img src="\images\posters\Jigokuraku.png" alt=""></a>
+            </div>
         </div>
     </main>
 </x-app-layout>

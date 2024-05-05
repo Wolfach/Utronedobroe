@@ -12,10 +12,6 @@ class AnimepostersController extends Controller
      */
     public function index()
     {
-
-        $animeposters = Animeposters::all();
-
-        return view('/dashboard', compact('animeposters'));
  
     }
 
@@ -40,7 +36,10 @@ class AnimepostersController extends Controller
      */
     public function show(Animeposters $animeposters)
     {
-        //
+        // $animeposters = Animeposters::all();
+
+        // return view('dashboard', compact('animeposters'));
+ 
     }
 
     /**
