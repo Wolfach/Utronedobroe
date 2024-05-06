@@ -28,6 +28,16 @@
             <div class="block_text"><a href="" class="block__text-1">Мастер меча онлайн</a></div>
         </div>
         <div class="block-2">
+        <div class="block-1__wrap">
+            <div class="block-1__wrap__list">
+                <span>Тип: ТВ-сериал</span>
+                <span>Эпизоды: 0/25</span>
+                <span>Статус: Вышло</span>
+                <span>Год: 2012</span>
+                <span>Студия: A-1 Pictures</span>
+                <span>Жанр: Экшен, Приключения, Фэнтези, Романтика</span>
+                </div>
+            </div>
             <a href=""><img src="https://github.com/Wolfach/2024SpringPractic/blob/original/public/images/posters/Jigokuraku.png?raw=true" alt="" class="img_block"></a>
             <div class="block_text"><a href="" class="block__text-1">Адский рай</a></div>
         </div>
