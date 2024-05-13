@@ -1,6 +1,8 @@
+
 <x-app-layout>
     <x-slot name="header">
     </x-slot>
+
 
     <section>
         <img src="\images\mainpage.png" alt="">
@@ -12,72 +14,45 @@
         <div class="main__new">
             <div class="main__new__text">Недавно загруженное:</div>
         </div>
-        <section class="block">
-        <div class="block-1">
-        <div class="block-1__wrap">
-            <div class="block-1__wrap__list">
-                <span>Тип: ТВ-сериал</span>
-                <span>Эпизоды: 0/25</span>
-                <span>Статус: Вышло</span>
-                <span>Год: 2012</span>
-                <span>Студия: A-1 Pictures</span>
-                <span>Жанр: Экшен, Приключения, Фэнтези, Романтика</span>
+        <section class="flex flex-row">
+        @foreach($animedesc as $animeelement)
+        <div class="block">
+        <div class="block__wrap">
+            <div class="columns-3">
+                <span>Тип: {{$animeelement->type}}</span>
+                <span>Эпизоды: {{$animeelement->episodes}}</span>
+                <span>Статус: </span>
+                <span>Год: {{$animeelement->year}}</span>
+                <span>Студия: </span>
+                <span>Жанр: {{$animeelement->genre}}</span>
                 </div>
             </div>
-            <a href=""><img src="https://github.com/Wolfach/2024SpringPractic/blob/original/public/images/posters/8958e24041338f53bdab4955ed395d66.jpeg?raw=true" alt="" class="img_block"></a>
-            <div class="block_text"><a href="" class="block__text-1">Мастер меча онлайн</a></div>
+            <a href=""><img src="{{ asset($animeelement->poster)}}" alt="" class="img_block"></a>
+            <div class="block_text"><a href="" class="block__text-1">{{$animeelement->title}}</a></div>
         </div>
-        <div class="block-2">
-        <div class="block-1__wrap">
-            <div class="block-1__wrap__list">
-                <span>Тип: ТВ-сериал</span>
-                <span>Эпизоды: 0/25</span>
-                <span>Статус: Вышло</span>
-                <span>Год: 2012</span>
-                <span>Студия: A-1 Pictures</span>
-                <span>Жанр: Экшен, Приключения, Фэнтези, Романтика</span>
-                </div>
-            </div>
-            <a href=""><img src="https://github.com/Wolfach/2024SpringPractic/blob/original/public/images/posters/Jigokuraku.png?raw=true" alt="" class="img_block"></a>
-            <div class="block_text"><a href="" class="block__text-1">Адский рай</a></div>
-        </div>
-        <div class="block-3">
-            <a href=""><img src="https://github.com/Wolfach/2024SpringPractic/blob/original/public/images/posters/%D0%92%D0%B5%D1%87%D0%B5%D1%80%D0%B0%20%D1%81%20%D0%BA%D0%BE%D1%88%D0%BA%D0%B5%D0%B9.png?raw=true" alt="" class="img_block"></a>
-            <div class="block_text"><a href="" class="block__text-1">Вечера с кошкой</a></div>
-        </div>
-        <div class="block-4">
-            <a href=""><img src="https://desu.shikimori.one/uploads/poster/animes/54789/0f5b92554173d58f55b5172af2429657.jpeg" alt="" class="img_block"></a>
-            <div class="block_text"><a href="" class="block__text-1">Моя геройская академия</a></div>
-        </div>
-    </section>
-    <section class="block">
-        <div class="block-1">
-            <a href=""><img src="https://desu.shikimori.one/uploads/poster/animes/54900/40587f7f08a709f3b987c9e0f4cf4009.jpeg" alt="" class="img_block"></a>
-            <div class="block_text"><a href="" class="block__text-1">Ветролом</a></div>
-        </div>
-        <div class="block-2">
-            <a href=""><img src="https://desu.shikimori.one/uploads/poster/animes/52588/c30b9cf86423b311af2abe673ccbcdd0.jpeg" alt="" class="img_block"></a>
-            <div class="block_text"><a href="" class="block__text-1">Кайдзю номер восемь</a></div>
-        </div>
-        <div class="block-3">
-            <!-- <a href=""><img src="" alt="" class="img_block"></a> -->
-            <div class="block_text"><a href="" class="block__text-1"></a></div>
-        </div>
-        <div class="block-4">
-            <!-- <a href=""><img src="" alt="" class="img_block"></a> -->
-            <div class="block_text"><a href="" class="block__text-1"></a></div>
-        </div>
+        @endforeach
     </section>
     </main>
 </x-app-layout>
 
 <style>
     .main{
+        justify-content: center;
+    align-items: center;
     width: 100%;
+    flex-direction: column;
+    display: flex;
     height: 100%;
     margin-top: 10px;
 }
-.block-1__wrap{
+.flex{
+    flex-wrap: wrap;
+    width: 1160px;
+}
+.block{
+    padding: 20px;
+}
+.block__wrap{
     justify-content: center;
     align-items: center;
     display: flex;
@@ -87,7 +62,7 @@
     height: 350px;
     width: 250px;
 }
-.block-1:hover .block-1__wrap{
+.block:hover .block__wrap{
     visibility: visible;
     background-color:#000;
     opacity:0.7;
@@ -95,13 +70,22 @@
     opacity:2s;
     cursor: pointer;
 }
-/* .img_block:hover{
-    background-color:#000;
-    opacity:0.9;
-    opacity:2s;
-} */
 
-.block-1__wrap__list{
+.columns-3{
+    margin-left: 40px;
+    width: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 20px;
+}
+.columns-3 span{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+/* .block-1__wrap__list{
     display: flex;
     flex-direction: column;
     margin-left: 40px;
@@ -112,7 +96,7 @@
     width: 250px;
     white-space: nowrap;
     font-size: 20px;
-}
+} */
 .main__search{
     height: 25px;
     justify-content: center;
@@ -138,20 +122,6 @@
 }
 body {
     background: #181616;
-}
-.block {
-    display: flex;
-    padding: 50px 50px 0px 50px;
-    justify-content: space-between;
-}
-.block-1 {
-    margin-right: 50px;
-}
-.block-2 {
-    margin-right: 50px;
-}
-.block-3 {
-    margin-right: 50px;
 }
 
 .block_text {
@@ -179,5 +149,9 @@ body {
 .img_block {
     height: 350px;
     width: 250px;
+}
+.columns-3{
+    flex-direction: column;
+    display: flex;
 }
 </style>

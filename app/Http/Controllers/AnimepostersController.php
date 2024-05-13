@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Animeposters;
+use App\Http\Requests\StorePosters;
 use Illuminate\Http\Request;
 
 class AnimepostersController extends Controller
@@ -12,7 +13,9 @@ class AnimepostersController extends Controller
      */
     public function index()
     {
- 
+        $animedesc = Animeposters::orderBy('id')->get();;
+
+        return view('dashboard', compact('animedesc'));
     }
 
     /**
@@ -26,20 +29,20 @@ class AnimepostersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store (StorePosters $request)
     {
-        //
+        Animeposters::create($request->validated());
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Animeposters $animeposters)
+    public function show(StorePosters $animeposters)
     {
-        // $animeposters = Animeposters::all();
-
-        // return view('dashboard', compact('animeposters'));
- 
+        $path = storage_path('/app/public/images/') . $image;
+        
+        return response()->file($path);
     }
 
     /**
